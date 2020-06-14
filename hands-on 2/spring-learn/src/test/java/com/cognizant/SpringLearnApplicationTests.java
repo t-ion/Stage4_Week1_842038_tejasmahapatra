@@ -46,7 +46,7 @@ class SpringLearnApplicationTests {
 	@Test
     public void testGetCountryException()  throws Exception {
 		LOGGER.info("testgetcountryexc start");
-        ResultActions actions = mvc.perform(get("/country/az"));
+        ResultActions actions = mvc.perform(get("/countries/az"));
         actions.andExpect(status().isNotFound());
         actions.andExpect(status().reason("Country not found"));
 //        actions.andExpect(status().reason("Country not found"));
