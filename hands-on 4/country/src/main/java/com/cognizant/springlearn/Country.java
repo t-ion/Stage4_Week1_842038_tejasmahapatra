@@ -13,7 +13,7 @@ public class Country {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplication.class);
 
 	public Country() {
-		LOGGER.info("Inside Country Constructor.");
+		LOGGER.info("Inside Country Constructor."+code);
 	}
 
 	@Override

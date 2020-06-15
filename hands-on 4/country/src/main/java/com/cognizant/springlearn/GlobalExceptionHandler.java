@@ -22,7 +22,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	@Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
             HttpHeaders headers, HttpStatus status, WebRequest request) {
-        LOGGER.info("Start excft");
+        LOGGER.info("Start handleMethodArgumentNotValid");
         // Map that contains the error details
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", new Date());
@@ -35,7 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         // Add errors to the response map        
         body.put("errors", errors);
 
-        LOGGER.info("End");
+        LOGGER.info("End handleMethodArgumentNotValid");
         return new ResponseEntity<>(body, headers, status);
 
     }
