@@ -1,0 +1,77 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+static String biggerIsGreater(String w) {
+        char[] chars = w.toCharArray();
+        return nextPermutation(chars)
+            ? new String(chars)
+            : "no answer";
+    }
+    static boolean nextPermutation(char[] array) {
+        int i = getLastPeakIndex(array);
+        if (i <= 0) // like "dcba", no answer
+            return false;
+
+        int j = getReplacementIndex(array, i - 1);
+
+        swap(array, i-1, j);
+
+        // Reverse the part on the right of i - 1 to make it as small as possible
+        j = array.length - 1;
+        while (i < j) {
+            swap(array, i, j);
+            i++;
+            j--;
+        }
+        
+        return true;
+    }
+
+    static int getLastPeakIndex(char[] chars){
+        int i = chars.length - 1;
+        while (i > 0 && chars[i - 1] >= chars[i])
+            i--;
+        return i;
+    }
+
+    static int getReplacementIndex(char[] chars, int givenIndex){
+        int i = chars.length - 1;
+        while (chars[i] <= chars[givenIndex])
+            i--;
+        return i;
+    }
+
+    static void swap(char[] chars, int a, int b){
+        chars[a] ^= chars[b];
+        chars[b] ^= chars[a];
+        chars[a] ^= chars[b];
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int T = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int TItr = 0; TItr < T; TItr++) {
+            String w = scanner.nextLine();
+
+            String result = biggerIsGreater(w);
+
+            bufferedWriter.write(result);
+            bufferedWriter.newLine();
+        }
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
