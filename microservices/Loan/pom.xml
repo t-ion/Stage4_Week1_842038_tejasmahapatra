@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cognizant</groupId>
-	<artifactId>account</artifactId>
+	<artifactId>Loan</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>account</name>
+	<name>Loan</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
