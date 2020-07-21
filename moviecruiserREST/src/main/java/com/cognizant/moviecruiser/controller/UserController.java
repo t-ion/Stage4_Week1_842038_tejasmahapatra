@@ -47,7 +47,7 @@ public class UserController {
 		LOGGER.info("MovieController ArrayList<Movie> getMovieListAdmin() END");
 		return movieService.getMovieListCustomer();
 	}
-
+//update movie
 	@PutMapping("/adminmodify")
 	public void modifyMovie(@RequestBody Movie movie) {
 		LOGGER.info("MovieController modifyMovie START");
@@ -56,7 +56,8 @@ public class UserController {
 
 		LOGGER.info("MovieController modifyMovie END");
 	}
-
+//favorites mapping
+	
 	@GetMapping("/favorites/{userId}")
 	public ArrayList<Movie> getAllFavoritesMovies(@PathVariable @Valid String userId) {
 		LOGGER.info("MovieController.getAllFavoritesMovies START");
@@ -81,7 +82,7 @@ public class UserController {
 		LOGGER.info("MovieController.removeFavoritesMovie END");
 
 	}
-
+//get active movies
 	@GetMapping("/active")
 	public ArrayList<Movie> getMovieListActive() {
 		LOGGER.info("MovieController.getMovieListActive() START");
